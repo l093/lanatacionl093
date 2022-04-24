@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ana</title>
+<style type="text/css">
+body,td,th {
+	color: #006;
+}
+body {
+	background-image: url(../images/fondo.jpg);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="row">
+<h1 align="center">Formulario de Contacto</h1>
+<h2 align="center"><strong>Escribenos y nos pondremos en contacto contigo!!</strong></h2>
+<center>
+<h2>
+  <form id="form">
+  <div class="mb-3">
+    <p>
+      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+      <input type="text" class="form-control" placeholder="Nombre" name="name" required="required" >
+    </p>
+  </div>
+  <div class="mb-3">
+    <p>
+      <label for="exampleInputPassword1" class="form-label">Apellidos</label>
+      <input type="text" class="form-control" placeholder="Apellidos" name="last" required="required">
+    </p>
+  </div>
+   <div class="mb-3">
+     <p>
+       <label for="exampleInputPassword1" class="form-label">Teléfono</label>
+       <input type="number" class="form-control" placeholder="Teléfono" name="phone" required="required">
+     </p>
+   </div>
+   <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Correo Electrónico</label>
+    <input type="email" class="form-control" placeholder="Email" name="email" required="required" >
+  </div>
+   <div class="mb-3">
+     <p>
+       <label for="exampleInputPassword1" class="form-label">Mensaje</label>
+       <textarea type="email" class="form-control" placeholder="Mensaje" name="message" required="required" ></textarea>
+     </p>
+     <p>&nbsp;</p>
+   </div>
+  <input type="submit" class="btn btn=success" id="button" value="Enviar Mensaje" >
+</form>
+</h2>
+</center>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('ZrNtr42cJCJLUcWiR')
+</script>
+
+<script> 
+const btn = document.getElementById('button');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Enviando...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_ike20wl';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then (() => {
+      btn.value = 'Enviar Mnesaje';
+      alert('Mensaje enviado correctamente!');
+    }, (err) => {
+      btn.value = 'Enviar Mensaje';
+      alert(JSON.stringify(err));
+    });
+}); </script>
+</div>
+<div align="center"></div>
+
+
+</body>
+</html>
